@@ -1,0 +1,37 @@
+nav{
+    background: black;
+    color: greenyellow;
+    height: 100px;
+    padding: 10px;
+    margin: 0 20px 20px 20px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+img{
+    opacity: 50%;
+}
+body{
+    background: repeating-linear-gradient( 45deg, #ffffff20 100px, #22222205 200px, #22558810 200px, #22558810 300px );
+}
+.container{
+    background: #11331110;
+    /*background-color: rgba(11, 33, 11, 10%);*/
+    color: black;
+    min-height: 300px;
+    font-family: Arial sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+footer{
+     background: black;
+    color: greenyellow;
+    height: 30px;
+    padding: 10px;
+    margin: 30px 20px 20px 20px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+}

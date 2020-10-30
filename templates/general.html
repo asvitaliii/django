@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<nav>
+    University Harvard
+    <div>
+        {% block img_logo %}
+        {% endblock img_logo %}
+    </div>
+</nav>
+<div class="container">
+
+{% block content %}
+{% endblock content %}
+</div>
+<footer>
+    Kyiv, 2020
+</footer>
+
+</body>
+</html>
