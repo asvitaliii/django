@@ -1,22 +1,21 @@
+{% load static %}
 nav{
     background: black;
     color: greenyellow;
-    height: 100px;
+    font-size: 30px;
+    height: 50px;
     padding: 10px;
     margin: 0 20px 20px 20px;
     text-align: center;
     justify-content: center;
     border-radius: 10px;
 }
-img{
-    opacity: 50%;
-}
 body{
-    background: repeating-linear-gradient( 45deg, #ffffff20 100px, #22222205 200px, #22558810 200px, #22558810 300px );
+    background: linear-gradient(127deg, rgba(50,52,54,1) 76%, rgba(55,59,59,1) 81%, rgba(92,97,90,1) 89%, rgba(174,175,171,1) 97%, rgba(255,255,255,1) 100%);
+    color: greenyellow;
 }
 .container{
-    background: #11331110;
-    /*background-color: rgba(11, 33, 11, 10%);*/
+    background-image:url("{% static 'img/bg.jpg' %}") no-repeat;
     color: black;
     min-height: 300px;
     font-family: Arial sans-serif;
@@ -26,7 +25,7 @@ body{
     padding: 10px 15px;
 }
 footer{
-     background: black;
+    background: black;
     color: greenyellow;
     height: 30px;
     padding: 10px;
