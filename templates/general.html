@@ -8,13 +8,21 @@
         {% endblock title %}
     </title>
     <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <style>
+        #image{
+            background: url("{% static 'img/bg.jpg' %}") no-repeat fixed;
+            background-size: 30%;
+            background-position: 0% 100%;
+
+        }
+    </style>
 </head>
 <body>
 <nav>
     Стих:
 </nav>
 <audio autoplay src="{% static 'audio/bg.mp3' %}"></audio>
-<div class="container">
+<div class="container" id="image">
 {% block content %}
 {% endblock content %}
 </div>

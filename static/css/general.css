@@ -15,10 +15,9 @@ body{
     color: greenyellow;
 }
 .container{
-    background-image:url("{% static 'img/bg.jpg' %}") no-repeat;
     color: black;
     min-height: 300px;
-    font-family: Arial sans-serif;
+    ont-family: Arial sans-serif;
     font-size: 20px;
     text-align: center;
     border-radius: 10px;
