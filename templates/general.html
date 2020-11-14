@@ -19,9 +19,10 @@
 </head>
 <body>
 <nav>
-    Стих:
+    <a href="{% url 'login-page' %}"; style="font-size: 15px; margin-left: 84%; color: greenyellow">Вход</a>
+    <a href="{% url 'register' %}"; style="font-size: 15px; color: greenyellow">Регистрация</a><br>
 </nav>
-<audio autoplay src="{% static 'audio/bg.mp3' %}"></audio>
+<!--<audio autoplay src="{% static 'audio/bg.mp3' %}"></audio>-->
 <div class="container" id="image">
 {% block content %}
 {% endblock content %}

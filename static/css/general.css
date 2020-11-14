@@ -3,9 +3,9 @@ nav{
     background: black;
     color: greenyellow;
     font-size: 30px;
-    height: 50px;
+    height: 70px;
     padding: 10px;
-    margin: 0 20px 20px 20px;
+    margin: 0 10px 10px 10px;
     text-align: center;
     justify-content: center;
     border-radius: 10px;
@@ -16,7 +16,7 @@ body{
 }
 .container{
     color: black;
-    min-height: 300px;
+    min-height: 400px;
     ont-family: Arial sans-serif;
     font-size: 20px;
     text-align: center;
@@ -32,4 +32,26 @@ footer{
     text-align: center;
     justify-content: center;
     border-radius: 10px;
+}
+
+.form{
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+    border: black solid 1px;
+    border-radius: 5px;
+    padding: 15px 5px;
+}
+
+.form button{
+    background-color: dimgray;
+    border-radius: 2px;
+    border: none;
+    padding: 3px;
+    width: 20%;
+}
+
+.err{
+    color: red;
+    margin-left: 7px;
 }

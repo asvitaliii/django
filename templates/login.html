@@ -1,0 +1,17 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Авторизация
+{% endblock title %}
+
+{% block content %}
+<form class="form" action="/login" method="post">
+    <label for="login_field">Логин:</label>
+    <input type="text" name="login_field" id="login_field" placeholder="введите логин"><br>
+    <label for="password_field">Пароль:</label>
+    <input type="password" name="password_field" id="password_field" placeholder="введите пароль"> <br>
+    <button>OK</button>
+    <button>Отмена</button>
+</form>
+{% endblock content %}
