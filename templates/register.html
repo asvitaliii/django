@@ -2,20 +2,26 @@
 {% load static %}
 
 {% block title %}
-    Авторизация
+    Регистрация
 {% endblock title %}
 
 {% block content %}
-<form class="form" action="/register" method="post">
+<form class="form" action="/register/" method="post">
+    {% csrf_token %}
+    <div class="err">{{ report }}</div>
     <label for="login_field">Логин:</label>
     <input type="text" name="login_field" id="login_field" placeholder="введите логин"><br>
+
     <label for="email_field">E-mail:</label>
     <input type="email" name="email_field" id="email_field" placeholder="введите почту"><br>
+
     <label for="password_field">Пароль:</label>
     <input type="password" name="password_field" id="password_field" placeholder="введите пароль"> <br>
+
     <label for="password_confirmation_field">Повторите пароль:</label>
     <input type="password" name="password_confirmation_field" id="password_confirmation_field" placeholder="введите пароль повторно"> <br>
-    <button>OK</button>
-    <button>Отмена</button>
+
+    <input id="submit" type="submit" value="ОК" class="button">
+    <input type="reset" value="Очистить" class="button">
 </form>
 {% endblock content %}

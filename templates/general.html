@@ -19,8 +19,18 @@
 </head>
 <body>
 <nav>
-    <a href="{% url 'login-page' %}"; style="font-size: 15px; margin-left: 84%; color: greenyellow">Вход</a>
-    <a href="{% url 'register' %}"; style="font-size: 15px; color: greenyellow">Регистрация</a><br>
+    {% if user.is_authenticated %}
+    <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
+        <a href="">Домой</a>
+        <a href="{% url 'logout' %}";>Выход</a>
+    </div>
+    {% else %}
+    <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
+        <a href="">Домой</a>
+        <a href="{% url 'login-page' %}";>Вход</a>
+        <a href="{% url 'register' %}";>Регистрация</a>
+    </div>
+    {% endif %}
 </nav>
 <!--<audio autoplay src="{% static 'audio/bg.mp3' %}"></audio>-->
 <div class="container" id="image">

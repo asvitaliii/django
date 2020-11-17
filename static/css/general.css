@@ -43,7 +43,7 @@ footer{
     padding: 15px 5px;
 }
 
-.form button{
+.form .button{
     background-color: dimgray;
     border-radius: 2px;
     border: none;

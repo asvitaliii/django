@@ -6,12 +6,15 @@
 {% endblock title %}
 
 {% block content %}
-<form class="form" action="/login" method="post">
+<form class="form" action="/login/" method="post">
+    {% csrf_token %}
+    <div class="err">{{ report }}</div>
     <label for="login_field">Логин:</label>
     <input type="text" name="login_field" id="login_field" placeholder="введите логин"><br>
     <label for="password_field">Пароль:</label>
     <input type="password" name="password_field" id="password_field" placeholder="введите пароль"> <br>
-    <button>OK</button>
-    <button>Отмена</button>
+
+    <input id="submit" type="submit" value="ОК" class="button">
+    <input type="reset" value="Очистить" class="button">
 </form>
 {% endblock content %}
