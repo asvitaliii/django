@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
+from django.http import JsonResponse
 
 
-# Create your views here.
 def index(request):
     return render(request, 'StartPage/index.html')
 
@@ -60,3 +60,22 @@ def sign_in(request):
 def logout_user(request):
     logout(request)
     return redirect('/')
+
+
+def ajax_reg(request) -> JsonResponse:
+    response = dict()
+    login_val = request.GET.get('login_field')
+    try:
+        User.objects.get(username=login_val)
+        response['message_login'] = 'Логин занят!'
+    except User.DoesNotExist:
+        response['message_login'] = 'ОК!'
+    return JsonResponse(response)
+
+
+def ajax_log(request) -> JsonResponse:
+    try:
+        User.objects.get(username=request.GET.get('login_field'))
+        return JsonResponse({'res': 'OK'})
+    except User.DoesNotExist:
+        return JsonResponse({'res': ''})

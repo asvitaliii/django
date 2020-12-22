@@ -6,22 +6,35 @@
 {% endblock title %}
 
 {% block content %}
-<form class="form" action="/register/" method="post">
+<form class="form" action="/register" method="post" onsubmit="return false">
     {% csrf_token %}
     <div class="err">{{ report }}</div>
+    <p>
     <label for="login_field">Логин:</label>
-    <input type="text" name="login_field" id="login_field" placeholder="введите логин"><br>
+    <input type="text" name="login_field" id="login_field" placeholder="введите логин">
+    <div id="login_err" class="err"></div>
+    </p>
 
+    <p>
     <label for="email_field">E-mail:</label>
-    <input type="email" name="email_field" id="email_field" placeholder="введите почту"><br>
+    <input type="email" name="email_field" id="email_field" placeholder="введите почту">
+    <div id="email_err" class="err"></div>
+    </p>
 
+    <p>
     <label for="password_field">Пароль:</label>
-    <input type="password" name="password_field" id="password_field" placeholder="введите пароль"> <br>
+    <input type="password" name="password_field" id="password_field" placeholder="введите пароль">
+    <div id="password_err" class="err"></div>
+    </p>
 
+    <p>
     <label for="password_confirmation_field">Повторите пароль:</label>
-    <input type="password" name="password_confirmation_field" id="password_confirmation_field" placeholder="введите пароль повторно"> <br>
+    <input type="password" name="password_confirmation_field" id="password_confirmation_field" placeholder="введите пароль повторно">
+    <div id="password_confirmation_err" class="err"></div>
+    </p>
 
     <input id="submit" type="submit" value="ОК" class="button">
     <input type="reset" value="Очистить" class="button">
 </form>
+<script src="{% static 'js/reg.js' %}"></script>
 {% endblock content %}

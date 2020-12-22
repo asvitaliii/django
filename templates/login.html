@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block content %}
-<form class="form" action="/login/" method="post">
+<form class="form" action="/login/" method="post" onsubmit="return false">
     {% csrf_token %}
     <div class="err">{{ report }}</div>
     <label for="login_field">Логин:</label>
@@ -16,5 +16,8 @@
 
     <input id="submit" type="submit" value="ОК" class="button">
     <input type="reset" value="Очистить" class="button">
+    <input type="button" id="check" value="Проверить" class="button"><br>
+    <div id="check_state" class="err"></div>
 </form>
+<script src="{% static 'js/log.js' %}"></script>
 {% endblock content %}

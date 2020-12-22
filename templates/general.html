@@ -17,7 +17,13 @@
         }
     </style>
 </head>
+
 <body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+</script>
+
 <nav>
     {% if user.is_authenticated %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
@@ -26,17 +32,18 @@
     </div>
     {% else %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
-        <a href="">Домой</a>
+        <a href="{% url 'start_page' %}">Домой</a>
         <a href="{% url 'login-page' %}";>Вход</a>
         <a href="{% url 'register' %}";>Регистрация</a>
     </div>
     {% endif %}
 </nav>
-<!--<audio autoplay src="{% static 'audio/bg.mp3' %}"></audio>-->
+
 <div class="container" id="image">
 {% block content %}
 {% endblock content %}
 </div>
+
 <footer>
     Made with love in Preobrajenka, Ukraine, 2020
 </footer>
