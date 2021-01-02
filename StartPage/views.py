@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.http import JsonResponse
+from .models import Verse
+from .forms import VerseForm
 
 
 def index(request):
@@ -79,3 +81,20 @@ def ajax_log(request) -> JsonResponse:
         return JsonResponse({'res': 'OK'})
     except User.DoesNotExist:
         return JsonResponse({'res': ''})
+
+
+def verse_list(request):
+    return render(request, 'verse_list.html', context={'verses': Verse.objects.all()})
+
+
+def verse_add(request):
+    if request.method == "GET":
+        return render(request, 'verse_add.html', context={'verse_form': VerseForm()})
+    elif request.method == "POST":
+        VerseForm(request.POST).save()
+        return redirect('verse_list')
+
+
+def verse_detail(request, id: int):
+    return render(request, 'verse_detail.html', context={'verse': Verse.objects.get(id=id)})
+

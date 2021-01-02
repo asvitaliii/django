@@ -6,8 +6,7 @@ $(document).ready(function(){
             data: 'login_field=' + login_val,
             success: function(result){
                 if (result.res==='OK'){
-                    $('#check_state').text('')
-                    $('.form').attr('onsubmit', 'return true')
+                    $('#check_state').text('OK!')
                 }else{
                 $('#check_state').text('Пользователя не существует!')
                 }

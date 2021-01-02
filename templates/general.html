@@ -28,13 +28,15 @@
     {% if user.is_authenticated %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
         <a href="">Домой</a>
-        <a href="{% url 'logout' %}";>Выход</a>
+        <a href="{% url 'logout' %}";>Выход</a> <br>
+        <a href="{% url 'verse_list' %}">Библиотека</a>
     </div>
     {% else %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
         <a href="{% url 'start_page' %}">Домой</a>
-        <a href="{% url 'login-page' %}";>Вход</a>
-        <a href="{% url 'register' %}";>Регистрация</a>
+        <a href="{% url 'login-page' %}">Вход</a>
+        <a href="{% url 'register' %}">Регистрация</a> <br>
+        <a href="{% url 'verse_list' %}">Библиотека</a>
     </div>
     {% endif %}
 </nav>

@@ -1,0 +1,14 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Наша коллекция:)
+{% endblock title %}
+
+{% block content %}
+    {% for verse in verses %}
+        <a href="{% url 'verse_detail' verse.id %}">{{verse.id}}.{{verse.author}}-{{verse.name}}</a><br>
+    {% endfor %}
+    <br>
+    <a href="{% url 'verse_add' %}">Добавить стихотворение</a>
+{% endblock content %}

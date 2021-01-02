@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block content %}
-<form class="form" action="/login/" method="post" onsubmit="return false">
+<form class="form" action="/login" method="post" onsubmit="return true">
     {% csrf_token %}
     <div class="err">{{ report }}</div>
     <label for="login_field">Логин:</label>
