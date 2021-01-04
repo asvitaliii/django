@@ -30,6 +30,7 @@
         <a href="">Домой</a>
         <a href="{% url 'logout' %}";>Выход</a> <br>
         <a href="{% url 'verse_list' %}">Библиотека</a>
+        <a href="{% url 'author_list' %}">Наши авторы</a>
     </div>
     {% else %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
@@ -37,6 +38,7 @@
         <a href="{% url 'login-page' %}">Вход</a>
         <a href="{% url 'register' %}">Регистрация</a> <br>
         <a href="{% url 'verse_list' %}">Библиотека</a>
+        <a href="{% url 'author_list' %}">Наши авторы</a>
     </div>
     {% endif %}
 </nav>

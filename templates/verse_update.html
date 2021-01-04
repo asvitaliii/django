@@ -1,0 +1,24 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Изменить стих
+{% endblock title %}
+
+{% block content %}
+
+<form class="form-group" method="post" action="{% url 'verse_update' verse.id %}">
+    {% csrf_token %}
+    Форма изменения стиха
+
+    {% for field in verse_form %}
+    <p>
+        {{ field.label_tag }} {{ field }}
+    </p>
+    {% endfor %}
+
+    <input id="submit" type="submit" value="Send" class="button">
+    <input type="reset" value="Clear" class="button">
+
+{% endblock content %}
+</form>

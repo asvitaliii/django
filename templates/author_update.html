@@ -1,0 +1,24 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Изменить автора
+{% endblock title %}
+
+{% block content %}
+
+<form class="form-group" method="post" action="{% url 'author_update' author.id %}">
+    {% csrf_token %}
+    Форма изменения автора
+
+    {% for field in author_form %}
+    <p>
+        {{ field.label_tag }} {{ field }}
+    </p>
+    {% endfor %}
+
+    <input id="submit" type="submit" value="Send" class="button">
+    <input type="reset" value="Clear" class="button">
+
+{% endblock content %}
+</form>

@@ -9,6 +9,8 @@
 
     {{verse.name}}<br><br>
     {{verse.text}}<br><br>
-    {{verse.author}}<br>
+    {{verse.author}}<br><br>
+    <a href="{% url 'verse_del' verse.id %}">Удалить стих</a>
+    <a href="{% url 'verse_update' verse.id %}">Изменить стих</a>
 
 {% endblock content %}

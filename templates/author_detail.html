@@ -1,0 +1,18 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Наша коллекция:)
+{% endblock title %}
+
+{% block content %}
+
+    {{author.name}}<br><br>
+    {{author.about}}<br><br>
+    {% for verse in verses %}
+    <a href="{% url 'verse_detail' verse.id %}">{{ verse.name }}</a>
+    {% endfor %}<br>
+    <a href="{% url 'author_del' author.id %}">Удалить автора</a>
+    <a href="{% url 'author_update' author.id %}">Изменить автора</a>
+
+{% endblock content %}

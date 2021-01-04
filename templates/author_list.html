@@ -1,0 +1,14 @@
+{% extends "general.html" %}
+{% load static %}
+
+{% block title %}
+    Наши авторы:)
+{% endblock title %}
+
+{% block content %}
+    {% for author in authors %}
+        <a href="{% url 'author_detail' author.id %}">{{author.id}}.{{author.name}}</a><br>
+    {% endfor %}
+    <br>
+    <a href="{% url 'author_add' %}">Добавить автора</a>
+{% endblock content %}
