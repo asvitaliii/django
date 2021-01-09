@@ -157,5 +157,6 @@ def author_update(request, id: int):
         if author_form.is_valid():
             author.name = author_form.cleaned_data['name']
             author.about = author_form.cleaned_data['about']
+            author.img = author_form.cleaned_data['img']
             author.save()
     return redirect(f'/{id}/author_detail')

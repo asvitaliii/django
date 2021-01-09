@@ -11,4 +11,4 @@ class VerseForm(forms.ModelForm):
 class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
-        fields = ('name', 'about')
+        fields = ('name', 'about', 'img')

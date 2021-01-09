@@ -8,6 +8,7 @@
 {% block content %}
 
     {{author.name}}<br><br>
+    <img height="300px" src="/media/{{author.img}}" alt=""><br><br>
     {{author.about}}<br><br>
     {% for verse in verses %}
     <a href="{% url 'verse_detail' verse.id %}">{{ verse.name }}</a>
