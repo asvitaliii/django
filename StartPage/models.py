@@ -8,11 +8,7 @@ class Author(models.Model):
         upload_to='images/',
         null=True,
         blank=True,
-        width_field='width_field',
-        height_field='height_field'
     )
-    height_field = models.IntegerField(default=0)
-    width_field = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
