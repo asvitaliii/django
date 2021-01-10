@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<form class="form-group" method="post" action="{% url 'author_update' author.id %}">
+<form class="form-group" enctype="multipart/form-data" method="post" action="{% url 'author_update' author.id %}">
     {% csrf_token %}
     Форма изменения автора
 

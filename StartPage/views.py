@@ -131,7 +131,7 @@ def author_add(request):
     if request.method == "GET":
         return render(request, 'author_add.html', context={'author_form': AuthorForm()})
     elif request.method == "POST":
-        AuthorForm(request.POST).save()
+        AuthorForm(request.POST, request.FILES).save()
         return redirect('author_list')
 
 
@@ -153,7 +153,7 @@ def author_update(request, id: int):
         data['author_form'] = author_form
         return render(request, 'author_update.html', context=data)
     elif request.method == "POST":
-        author_form = AuthorForm(request.POST)
+        author_form = AuthorForm(request.POST, request.FILES)
         if author_form.is_valid():
             author.name = author_form.cleaned_data['name']
             author.about = author_form.cleaned_data['about']

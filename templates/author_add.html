@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<form class="form-group" method="post" action="{% url 'author_add' %}">
+<form class="form-group" enctype="multipart/form-data" method="post" action="{% url 'author_add' %}">
     {% csrf_token %}
     Форма добавления стиха
 

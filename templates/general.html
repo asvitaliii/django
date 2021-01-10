@@ -27,7 +27,7 @@
 <nav>
     {% if user.is_authenticated %}
     <div style="font-size: 15px; margin-left: 84%; color: greenyellow; ">
-        <a href="">Домой</a>
+        <a href="{% url 'start_page' %}">Домой</a>
         <a href="{% url 'logout' %}";>Выход</a> <br>
         <a href="{% url 'verse_list' %}">Библиотека</a>
         <a href="{% url 'author_list' %}">Наши авторы</a>
