@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import index, sign_in, register, logout_user, ajax_reg, ajax_log, verse_list, verse_add, verse_detail,\
-    verse_del, verse_update, author_update, author_del, author_add, author_list, author_detail
+    verse_del, verse_update, author_update, author_del, author_add, author_list, author_detail, ajax_like
 
 
 urlpatterns = [
@@ -20,5 +20,5 @@ urlpatterns = [
     path('author_add', author_add, name='author_add'),
     path('<int:id>/author_del', author_del, name='author_del'),
     path('<int:id>/author_update', author_update, name='author_update'),
-
+    path('<int:id>/like', ajax_like, name='ajax_like'),
 ]

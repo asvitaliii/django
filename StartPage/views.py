@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from .models import Verse, Author
 from .forms import VerseForm, AuthorForm
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -66,9 +67,8 @@ def logout_user(request):
 
 def ajax_reg(request) -> JsonResponse:
     response = dict()
-    login_val = request.GET.get('login_field')
     try:
-        User.objects.get(username=login_val)
+        User.objects.get(username=request.GET.get('login_field'))
         response['message_login'] = 'Логин занят!'
     except User.DoesNotExist:
         response['message_login'] = 'ОК!'
@@ -84,7 +84,7 @@ def ajax_log(request) -> JsonResponse:
 
 
 def verse_list(request):
-    return render(request, 'verse_list.html', context={'verses': Verse.objects.all()})
+    return render(request, 'verse_list.html', context={'verses': Paginator(Verse.objects.all(), 2).get_page(request.GET.get('page'))})
 
 
 def verse_add(request):
@@ -96,8 +96,10 @@ def verse_add(request):
 
 
 def verse_detail(request, id: int):
+    if not Verse.objects.filter(id=id).exists():
+        raise Http404
     verse = Verse.objects.get(id=id)
-    return render(request, 'verse_detail.html', context={'verse': verse})
+    return render(request, 'verse_detail.html', context={'verse': verse, 'liked': request.user in verse.likes.all()})
 
 
 def verse_del(request, id: int):
@@ -160,3 +162,18 @@ def author_update(request, id: int):
             author.img = author_form.cleaned_data['img']
             author.save()
     return redirect(f'/{id}/author_detail')
+
+
+def ajax_like(request, id):
+    response = dict()
+    response['status'] = 'error'
+    if request.user.is_authenticated:
+        if not Verse.objects.filter(id=id).exists():
+            raise Http404
+        if request.GET.get('like_action') == 'add':
+            Verse.objects.get(id=id).likes.add(request.user)
+            response['status'] = 'ok'
+        else:
+            Verse.objects.get(id=id).likes.remove(request.user)
+            response['status'] = 'ok'
+    return JsonResponse(response)

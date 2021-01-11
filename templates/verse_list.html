@@ -10,5 +10,26 @@
         <a href="{% url 'verse_detail' verse.id %}">{{verse.id}}.{{verse.author}}-{{verse.name}}</a><br>
     {% endfor %}
     <br>
+    <div class="row">
+                    {% if verses.has_previous %}
+                        <a href="?page=1" class="col-1"> 1 </a>
+                        {% if verses.previous_page_number != 1 %}
+                            ...
+                            <a href="?page={{verses.previous_page_number}}" class="col-1"> <<< </a>
+                        {% endif %}
+                    {% endif %}
+                    <span class="col-3 text-center">...</span>
+
+
+                    {% if verses.has_next %}
+                        {% if verses.next_page_number  !=  verses.paginator.num_pages %}
+                            <a href="?page={{verses.next_page_number}}" class="col-1"> >>> </a>
+                            ...
+                        {% endif %}
+                        <a href="?page={{verses.paginator.num_pages}}" class="col-1"> {{verses.paginator.num_pages}} </a>
+
+
+            {% endif %}
+    </div>
     <a href="{% url 'verse_add' %}">Добавить стихотворение</a>
 {% endblock content %}

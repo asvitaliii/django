@@ -7,10 +7,56 @@
 
 {% block content %}
 
-    {{verse.name}}<br><br>
     {{verse.text}}<br><br>
-    {{verse.author}}<br><br>
+    {{verse.author}}-{{verse.name}}
+
+    {% if liked %}
+        <button id="like_button">LIKED</button>
+    {% else %}
+        <button id="like_button">DISLIKED</button>
+    {% endif %}<span id="likes_count">{{verse.likes.count}}</span><br><br>
     <a href="{% url 'verse_del' verse.id %}">Удалить стих</a>
     <a href="{% url 'verse_update' verse.id %}">Изменить стих</a>
 
+<script>
+    $(document).ready(function () {
+    $('#like_button').click(function () {
+        if ($('#like_button').text() === 'DISLIKED'){
+            $.ajax({
+                url: '/{{verse.id}}/like',
+                method: 'GET',
+                data: {
+                    'like_action': 'add',
+                    'user': '{{user}}'
+                },
+                success: function (result) {
+                    if (result.status === 'ok'){
+                        $('#like_button').text('LIKED')
+                        $('#likes_count').text(+$('#likes_count').text() + 1)
+                    }
+
+                }
+            })
+
+        }else{
+            $.ajax({
+                url: '/{{verse.id}}/like',
+                method: 'GET',
+                data: {
+                    'like_action': 'remove',
+                    'user': '{{user}}'
+                },
+                success: function (result) {
+                    if (result.status === 'ok'){
+                        $('#like_button').text('DISLIKED')
+                        $('#likes_count').text(+$('#likes_count').text() - 1)
+                    }
+
+                }
+            })
+        }
+    })
+})
+
+</script>
 {% endblock content %}
