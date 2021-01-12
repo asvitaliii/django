@@ -5,6 +5,7 @@ from django.http import JsonResponse, Http404
 from .models import Verse, Author
 from .forms import VerseForm, AuthorForm
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def index(request):
@@ -84,7 +85,16 @@ def ajax_log(request) -> JsonResponse:
 
 
 def verse_list(request):
-    return render(request, 'verse_list.html', context={'verses': Paginator(Verse.objects.all(), 2).get_page(request.GET.get('page'))})
+    search = request.GET.get('search')
+    if search:
+        verses = Verse.objects.all().filter(
+            Q(name__icontains=search) |
+            Q(text__icontains=search)
+        )
+    else:
+        verses = Verse.objects.all()
+    return render(request, 'verse_list.html', context={'verses': Paginator(verses, 4).get_page(request.GET.get('page')),
+                                                       'search': search})
 
 
 def verse_add(request):

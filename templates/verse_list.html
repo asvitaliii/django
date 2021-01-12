@@ -6,30 +6,29 @@
 {% endblock title %}
 
 {% block content %}
+    <form class="form-group" action="" method="get">
+        <label class="text-secondary" for="search">Поиск стиха:</label>
+        <input class="form-control text-primary" id="search" name="search" type="text" value="{{search}}">
+        <input class="btn btn-primary mt-3" type="submit" value="Искать">
+    </form>
     {% for verse in verses %}
-        <a href="{% url 'verse_detail' verse.id %}">{{verse.id}}.{{verse.author}}-{{verse.name}}</a><br>
+        <a href="{% url 'verse_detail' verse.id %}">{{verse.id}}.{{verse.author}} - {{verse.name}}</a><br>
     {% endfor %}
     <br>
     <div class="row">
-                    {% if verses.has_previous %}
-                        <a href="?page=1" class="col-1"> 1 </a>
-                        {% if verses.previous_page_number != 1 %}
-                            ...
-                            <a href="?page={{verses.previous_page_number}}" class="col-1"> <<< </a>
-                        {% endif %}
-                    {% endif %}
-                    <span class="col-3 text-center">...</span>
-
-
-                    {% if verses.has_next %}
-                        {% if verses.next_page_number  !=  verses.paginator.num_pages %}
-                            <a href="?page={{verses.next_page_number}}" class="col-1"> >>> </a>
-                            ...
-                        {% endif %}
-                        <a href="?page={{verses.paginator.num_pages}}" class="col-1"> {{verses.paginator.num_pages}} </a>
-
-
+        {% if verses.has_previous %}
+            <a href="?page=1&search={{search}}" class="col-1"> 1 </a>
+            {% if verses.previous_page_number != 1 %}
+                ...<a href="?page={{verses.previous_page_number}}&search={{search}}" class="col-1"> <<< </a>
             {% endif %}
+        {% endif %}
+        <span class="col-3 text-center">...</span>
+        {% if verses.has_next %}
+            {% if verses.next_page_number  !=  verses.paginator.num_pages %}
+                <a href="?page={{verses.next_page_number}}&search={{search}}" class="col-1"> >>> </a>...
+            {% endif %}
+            <a href="?page={{verses.paginator.num_pages}}&search={{search}}" class="col-1"> {{verses.paginator.num_pages}} </a>
+        {% endif %}
     </div>
     <a href="{% url 'verse_add' %}">Добавить стихотворение</a>
 {% endblock content %}
